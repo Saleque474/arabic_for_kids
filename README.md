@@ -1,6 +1,7 @@
 # arabic_for_kids
+Tutorial
+https://youtu.be/sTZAUbLkk8c
 
-A new Flutter project.
 
 ## Getting Started
 
