@@ -17,7 +17,7 @@ class ScoreScreen extends StatelessWidget {
         children: [
           const Spacer(flex: 2),
           Text(name,
-              style: const TextStyle(fontSize: 30, color: Color(0xFF8fedcc))),
+              style: const TextStyle(fontSize: 30, color: Color(0xFF591870))),
           const Spacer(flex: 1),
           Text("$score",
               style: const TextStyle(fontSize: 30, color: Color(0xFF8fa0ed))),
