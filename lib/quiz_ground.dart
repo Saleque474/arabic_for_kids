@@ -1,8 +1,9 @@
-import 'package:arabic_for_kids/score_screen.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:audiofileplayer/audiofileplayer.dart';
+//import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import 'items.dart';
+import 'score_screen.dart';
 
 class QuizGround extends StatefulWidget {
   final String name;
@@ -15,7 +16,7 @@ class QuizGround extends StatefulWidget {
 class _QuizGroundState extends State<QuizGround> {
   late Items items;
   PageController pageController = PageController();
-  AudioPlayer audioPlayer = AudioPlayer();
+//  AudioPlayer audioPlayer = AudioPlayer();
   late String sound;
   int score = 0;
   @override
@@ -26,11 +27,16 @@ class _QuizGroundState extends State<QuizGround> {
   }
 
   play(String path) async {
-    int result = await audioPlayer.play(path, isLocal: true);
+    Audio.load(path)
+      ..play()
+      ..dispose();
+//    int result = await audioPlayer.play(path, isLocal: true);
   }
 
   toNext() {
+    //this line play sound
     play(sound);
+    //this 4 second for delay 4 second
     Future.delayed(Duration(seconds: 4)).then((value) {
       if (pageController.page == 27) {
         Navigator.of(context).pushAndRemoveUntil(
@@ -60,6 +66,7 @@ class _QuizGroundState extends State<QuizGround> {
           elevation: 0,
         ),
         body: PageView.builder(
+            physics: NeverScrollableScrollPhysics(),
             controller: pageController,
             scrollDirection: Axis.horizontal,
             itemCount: items.items.length,
